@@ -2,3 +2,74 @@
 li{
   list-style: none;
 }
+.container{margin: 1% auto;width: 80%}
+.wrap{
+  margin-bottom: 30px;
+}
+.s-title{
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background: #eee;
+}
+.card{
+  min-height: 100px;
+  border: 1px solid #ccc;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  padding: 15px;
+
+}
+pre{
+  background: #f4f0f0;
+  padding: 20px;
+  margin-top: 30px;
+  border-radius: 5px;
+  text-align: left;
+}
+/*利用 CSS 的 content 属性 attr 抓取属性实现鼠标放上悬浮效果*/
+.hover-attr{
+  width:600px;
+  border:1px solid #999;
+  position:relative;
+}
+.hover-attr:hover:after{
+  content:attr(data-msg);
+  position:absolute;
+  font-size: 12px;
+  width:100%;
+  line-height:30px;
+  left:0;
+  top:25px;
+  border:1px solid #666;
+}
+/*2、让文字像古诗一样竖着呈现*/
+.verticle-mode {
+  writing-mode: tb-rl;
+  -webkit-writing-mode: vertical-rl;
+  writing-mode: vertical-rl;
+}
+/* IE7 */
+.verticle-mode {
+  *width: 120px;
+}
+.verticle-mode h4,
+.verticle-mode p {
+  *display: inline;
+  *writing-mode: tb-rl;
+}
+.verticle-mode h4 {
+  *float:right;
+}
+/*鼠标悬浮内容自动撑开的过渡动画*/
+.bd {
+  max-height:0;
+  overflow:hidden;
+  transition: all .5s ease-out;
+}
+li:hover .bd {
+  max-height: 600px;
+  transition-timing-function: ease-in;
+}

@@ -4,30 +4,91 @@
     <meta charset="UTF-8">
     <title>Css知识点集萃</title>
     <link rel="stylesheet" href="./css_study.css">
-    <style>
-        .container{margin: 10% auto;width: 80%}
-        .s-title{
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-bottom: none;
-            border-top-left-radius: 3px;
-            border-top-right-radius: 3px;
-            background: #eee;
-        }
-        .card{
-            border: 1px solid #ccc;
-            border-bottom-left-radius: 3px;
-            border-bottom-right-radius: 3px;
-            padding: 15px;
-
-        }
-    </style>
 </head>
 <body>
     <div class="container">
-        <h3 class="s-title">1、利用 CSS 的 content 属性 attr 抓取属性实现鼠标放上悬浮效果</h3>
-        <div class="card">
-           马上就开始
+        <div class="wrap">
+            <h3 class="s-title">1、利用 CSS 的 content 属性 attr 抓取属性实现鼠标放上悬浮效果</h3>
+            <div class="card">
+                <div data-msg="请把鼠标放上来吧，看看有啥效果！" class="hover-attr">
+                    请把鼠标放上来吧，看看有啥效果！
+                </div>
+                <pre>
+                .hover-attr{
+                      width:600px;
+                      border:1px solid red;
+                      position:relative;
+                }
+                .hover-attr:hover:after{
+                      content:attr(data-msg);
+                      position:absolute;
+                      font-size: 12px;
+                      width:100%;
+                      line-height:30px;
+                      left:0;
+                      top:25px;
+                      border:1px solid green;
+                }
+            </pre>
+            </div>
+        </div>
+        <div class="wrap">
+            <h3 class="s-title">2、让文字像古诗一样竖着呈现</h3>
+            <div class="card">
+                <div class="verticle-mode">
+                    <h4>早发白帝城</h4>
+                    <p>朝辞白帝彩云间，<br>千里江陵一日还。<br>两岸猿声啼不住，<br>轻舟已过万重山。</p>
+                </div>
+                <pre>
+                    .verticle-mode {
+                        writing-mode: tb-rl;
+                        -webkit-writing-mode: vertical-rl;
+                        writing-mode: vertical-rl;
+                    }
+                    /* IE7 */
+                        .verticle-mode {
+                        *width: 120px;
+                    }
+                    .verticle-mode h4,
+                    .verticle-mode p {
+                        *display: inline;
+                        *writing-mode: tb-rl;
+                    }
+                    .verticle-mode h4 {
+                        *float:right;
+                    }
+                </pre>
+            </div>
+        </div>
+        <div class="wrap">
+            <h3 class="s-title">3、鼠标悬浮内容自动撑开的过渡动画</h3>
+            <div class="card">
+                <ul>
+                    <li>
+                        <div class="hd"> 列表1 </div>
+                        <div class="bd">内部列表内容<br>内容列表内容<br>内容列表内容<br>内容</div>
+                    </li>
+                    <li>
+                        <div class="hd"> 列表2 </div>
+                        <div class="bd">内部列表内容<br>内容列表内容<br>内容列表内容<br>内容</div>
+                    </li>
+                    <li>
+                        <div class="hd"> 列表3 </div>
+                        <div class="bd">内部列表内容<br>内容列表内容<br>内容列表内容<br>内容</div>
+                    </li>
+                </ul>
+                <pre>
+                    .bd {
+                      max-height:0;
+                      overflow:hidden;
+                      transition: all .5s ease-out;
+                    }
+                    li:hover .bd {
+                      max-height: 600px;
+                      transition-timing-function: ease-in;
+                    }
+                </pre>
+            </div>
         </div>
     </div>
 
